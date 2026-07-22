@@ -44,7 +44,7 @@ Homepage = "https://github.com/shell-bay/hybrid-frame"
 Repository = "https://github.com/shell-bay/hybrid-frame"
 
 [tool.setuptools]
-py-modules = ["hybrid_frame"]
+packages = ["hybrid_frame"]
 
 [tool.ruff]
 select = ["E", "F", "W", "I"]
