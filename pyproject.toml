@@ -3,13 +3,13 @@ requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hybridframe"
+name = "hybrid-frame"
 version = "0.3.0"
 description = "High-performance DataFrame unifying DuckDB (out-of-core) and Pandas (ML feature engineering)"
 license = { text = "MIT" }
 requires-python = ">=3.9"
 authors = [
-    { name = "Vignesh" },
+    { name = "mukesh" },
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -28,19 +28,20 @@ classifiers = [
 dependencies = [
     "duckdb>=0.8.0",
     "pandas>=1.5.0",
-    "pyarrow>=6.0.0",
 ]
 [project.optional-dependencies]
-"memory-guard" = ["psutil>=5.9.0"]
+arrow = ["pyarrow>=6.0.0"]
+memory-guard = ["psutil>=5.9.0"]
 ml = ["scikit-learn>=1.2.0"]
 all = [
+    "pyarrow>=6.0.0",
     "psutil>=5.9.0",
     "scikit-learn>=1.2.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/anomalyco/hybridframe"
-Repository = "https://github.com/anomalyco/hybridframe"
+Homepage = "https://github.com/shell-bay/hybrid-frame"
+Repository = "https://github.com/shell-bay/hybrid-frame"
 
 [tool.setuptools]
 py-modules = ["hybrid_frame"]
