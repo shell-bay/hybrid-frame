@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HybridFrame Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 1920px;
+            height: 1080px;
+            position: relative;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .title {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 36px;
+            color: #b0b0b0;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+        
+        .feature-desc {
+            font-size: 20px;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+        
+        .code-block {
+            background: #0d1117;
+            border-radius: 15px;
+            padding: 40px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 24px;
+            line-height: 1.8;
+            max-width: 1200px;
+            border: 1px solid #30363d;
+            margin-top: 40px;
+        }
+        
+        .code-keyword { color: #ff7b72; }
+        .code-string { color: #a5d6ff; }
+        .code-function { color: #d2a8ff; }
+        .code-comment { color: #8b949e; }
+        
+        .benchmark-bar {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            width: 800px;
+        }
+        
+        .benchmark-label {
+            width: 200px;
+            font-size: 24px;
+            color: #b0b0b0;
+        }
+        
+        .benchmark-fill {
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            font-weight: 600;
+            transition: width 1s ease-out;
+        }
+        
+        .pandas-bar {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+        
+        .hybrid-bar {
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+        }
+        
+        .cta {
+            font-size: 48px;
+            font-weight: 700;
+            margin-top: 60px;
+            color: #00d4ff;
+        }
+        
+        .logo {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            font-size: 24px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1: Title -->
+        <div class="slide active" data-start="0" data-duration="5">
+            <h1 class="title">HybridFrame</h1>
+            <p class="subtitle">The Fastest Way to Work with Data in Python</p>
+            <p class="feature-desc" style="font-size: 28px; margin-top: 40px;">
+                DuckDB + Pandas = Zero-Copy Performance
+            </p>
+        </div>
+        
+        <!-- Slide 2: Problem -->
+        <div class="slide" data-start="5" data-duration="5">
+            <h2 class="title" style="font-size: 56px;">The Problem</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🐌</div>
+                    <h3 class="feature-title">Pandas is Slow</h3>
+                    <p class="feature-desc">Complex queries take forever on large datasets</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"> memory</div>
+                    <h3 class="feature-title">Memory Issues</h3>
+                    <p class="feature-desc">Out-of-core processing is hard to implement</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Conversion Overhead</h3>
+                    <p class="feature-desc">Constant copying between engines wastes time</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Solution -->
+        <div class="slide" data-start="10" data-duration="5">
+            <h2 class="title" style="font-size: 56px;">The Solution</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Zero-Copy</h3>
+                    <p class="feature-desc">No data copying between DuckDB and Pandas</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">Smart Engine</h3>
+                    <p class="feature-desc">Auto-selects the best engine for each operation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">26x Faster</h3>
+                    <p class="feature-desc">Sort + Head operations up to 26x faster</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Code Example -->
+        <div class="slide" data-start="15" data-duration="7">
+            <h2 class="title" style="font-size: 48px;">Simple API</h2>
+            <div class="code-block">
+                <span class="code-keyword">from</span> hybrid_frame <span class="code-keyword">import</span> HybridFrame<br><br>
+                <span class="code-comment"># Create from Pandas</span><br>
+                hf = HybridFrame.<span class="code-function">from_pandas</span>(df)<br><br>
+                <span class="code-comment"># Lazy DuckDB operations</span><br>
+                result = (<br>
+                &nbsp;&nbsp;hf<br>
+                &nbsp;&nbsp;.<span class="code-function">filter</span>(<span class="code-string">"age > 25"</span>)<br>
+                &nbsp;&nbsp;.<span class="code-function">sort_values</span>(<span class="code-string">"salary"</span>, ascending=<span class="code-keyword">False</span>)<br>
+                &nbsp;&nbsp;.<span class="code-function">head</span>(<span class="code-string">10</span>)<br>
+                )<br><br>
+                <span class="code-comment"># Materialize for ML</span><br>
+                X, y = result.<span class="code-function">to_ml_ready</span>(<span class="code-string">"salary"</span>)
+            </div>
+        </div>
+        
+        <!-- Slide 5: Performance -->
+        <div class="slide" data-start="22" data-duration="5">
+            <h2 class="title" style="font-size: 56px;">Performance</h2>
+            <div style="margin-top: 40px;">
+                <div class="benchmark-bar">
+                    <span class="benchmark-label">Pandas</span>
+                    <div class="benchmark-fill pandas-bar" style="width: 780px;">78ms</div>
+                </div>
+                <div class="benchmark-bar">
+                    <span class="benchmark-label">HybridFrame</span>
+                    <div class="benchmark-fill hybrid-bar" style="width: 30px;">3ms</div>
+                </div>
+                <p style="font-size: 28px; color: #00d4ff; margin-top: 30px;">
+                    Sort + Head: 26x faster
+                </p>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Features -->
+        <div class="slide" data-start="27" data-duration="5">
+            <h2 class="title" style="font-size: 56px;">Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Filter & Sort</h3>
+                    <p class="feature-desc">SQL-native operations with lazy evaluation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">GroupBy & Agg</h3>
+                    <p class="feature-desc">Powerful aggregations with multiple functions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3 class="feature-title">Joins</h3>
+                    <p class="feature-desc">Hash joins with cross-connection transfer</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧹</div>
+                    <h3 class="feature-title">Data Cleaning</h3>
+                    <p class="feature-desc">fillna, dropna, replace, clip</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">ML Ready</h3>
+                    <p class="feature-desc">to_ml_ready() for scikit-learn</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3 class="feature-title">Streaming</h3>
+                    <p class="feature-desc">fetch_chunked() for out-of-core</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: CTA -->
+        <div class="slide" data-start="32" data-duration="5">
+            <h2 class="title" style="font-size: 64px;">Get Started</h2>
+            <div class="code-block" style="font-size: 32px; text-align: center;">
+                pip install hybrid-frame
+            </div>
+            <p class="cta" style="margin-top: 60px;">https://github.com/shell-bay/hybrid-frame</p>
+            <p class="logo">HybridFrame v0.3.1</p>
+        </div>
+    </div>
+</body>
+</html>
