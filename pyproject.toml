@@ -4,8 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hybrid-frame"
-version = "0.3.0"
+version = "0.3.1"
 description = "High-performance DataFrame unifying DuckDB (out-of-core) and Pandas (ML feature engineering)"
+readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
 authors = [

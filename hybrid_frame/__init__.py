@@ -19,7 +19,7 @@ state transparently — no user-facing .compute() calls needed.
 from __future__ import annotations
 
 __all__ = ["HybridFrame", "HybridFrameError"]
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 import logging
 import math
