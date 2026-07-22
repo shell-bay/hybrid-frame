@@ -60,6 +60,12 @@ pip install hybrid-frame[ml]             # scikit-learn for ML export
 pip install hybrid-frame[all]            # Everything
 ```
 
+## Demo Video
+
+https://github.com/user-attachments/assets/hybridframe-demo.mp4
+
+*(Watch the 37-second overview of HybridFrame architecture and performance)*
+
 ## Why HybridFrame?
 
 | Operation | Pandas | HybridFrame | Speedup |
