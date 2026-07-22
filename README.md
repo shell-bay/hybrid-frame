@@ -62,9 +62,9 @@ pip install hybrid-frame[all]            # Everything
 
 ## Demo Video
 
-https://github.com/user-attachments/assets/hybridframe-demo.mp4
+[Watch the HybridFrame Overview Video](https://github.com/shell-bay/hybrid-frame/blob/main/video/hybridframe-demo.mp4)
 
-*(Watch the 37-second overview of HybridFrame architecture and performance)*
+*(37-second overview of HybridFrame architecture and performance)*
 
 ## Why HybridFrame?
 
