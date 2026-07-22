@@ -60,6 +60,9 @@ pip install hybrid-frame[ml]             # scikit-learn for ML export
 pip install hybrid-frame[all]            # Everything
 ```
 
+## Updates (v0.3.2)
+- Fixed `TypeError` in `diff()` on string columns for newer Pandas versions.
+
 ## Demo Video
 
 
