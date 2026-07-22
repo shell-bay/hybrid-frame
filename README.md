@@ -307,7 +307,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+Apache License 2.0 - see [LICENSE](https://github.com/shell-bay/hybrid-frame/blob/main/LICENSE) for details.
 
 ## Author
 
