@@ -1952,7 +1952,8 @@ class HybridFrame:
                 raise HybridFrameError(f"diff failed: {e}") from e
             return self
         self._to_pandas()
-        self._df = self._df.diff()
+        numeric_cols = self._get_numeric_columns()
+        self._df[numeric_cols] = self._df[numeric_cols].diff()
         return self
 
     # ------------------------------------------------------------------
