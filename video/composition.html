@@ -12,9 +12,9 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #090a0f;
+            color: #f8fafc;
             overflow: hidden;
             width: 1920px;
             height: 1080px;
@@ -24,6 +24,7 @@
             width: 1920px;
             height: 1080px;
             position: relative;
+            background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 60%, #090a0f 100%);
         }
         
         .slide {
@@ -36,269 +37,403 @@
             align-items: center;
             padding: 80px;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            transform: scale(0.98);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .slide.active, .slide.clip {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
         }
         
         .title {
-            font-size: 72px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            font-size: 80px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #10b981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center;
+            letter-spacing: -2px;
         }
         
         .subtitle {
-            font-size: 36px;
-            color: #b0b0b0;
-            margin-bottom: 60px;
+            font-size: 38px;
+            color: #94a3b8;
+            margin-bottom: 40px;
             text-align: center;
+            font-weight: 400;
         }
         
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            max-width: 1400px;
+            gap: 36px;
+            max-width: 1440px;
+            width: 100%;
         }
         
         .feature-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: #1e293b;
             border-radius: 20px;
             padding: 40px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #f59e0b);
         }
         
         .feature-icon {
-            font-size: 48px;
+            font-size: 40px;
             margin-bottom: 20px;
+            display: inline-block;
         }
         
         .feature-title {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #00d4ff;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #f8fafc;
         }
         
         .feature-desc {
             font-size: 20px;
-            color: #b0b0b0;
-            line-height: 1.5;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        
+        .code-container {
+            background: #0f172a;
+            border-radius: 20px;
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            max-width: 1200px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .code-header {
+            background: #1e293b;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .code-dots {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #f43f5e; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+        
+        .code-title {
+            margin-left: 20px;
+            font-family: 'Consolas', monospace;
+            font-size: 16px;
+            color: #64748b;
         }
         
         .code-block {
-            background: #0d1117;
-            border-radius: 15px;
             padding: 40px;
             font-family: 'Fira Code', 'Consolas', monospace;
             font-size: 24px;
             line-height: 1.8;
-            max-width: 1200px;
-            border: 1px solid #30363d;
-            margin-top: 40px;
             text-align: left;
+            color: #e2e8f0;
         }
         
-        .code-keyword { color: #ff7b72; }
-        .code-string { color: #a5d6ff; }
-        .code-function { color: #d2a8ff; }
-        .code-comment { color: #8b949e; }
+        .code-keyword { color: #f43f5e; font-weight: 600; }
+        .code-string { color: #10b981; }
+        .code-function { color: #f59e0b; }
+        .code-comment { color: #64748b; font-style: italic; }
         
-        .benchmark-bar {
+        .benchmark-box {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 48px;
+            border: 1px solid #334155;
+            width: 900px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .benchmark-bar-group {
+            margin: 28px 0;
+        }
+        
+        .benchmark-header {
             display: flex;
-            align-items: center;
-            margin: 20px 0;
-            width: 800px;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 12px;
         }
         
-        .benchmark-label {
-            width: 200px;
-            font-size: 24px;
-            color: #b0b0b0;
+        .benchmark-track {
+            height: 44px;
+            background: #0f172a;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #334155;
         }
         
         .benchmark-fill {
-            height: 40px;
+            height: 100%;
             border-radius: 10px;
             display: flex;
             align-items: center;
-            padding-left: 20px;
-            font-weight: 600;
+            justify-content: flex-end;
+            padding-right: 20px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #ffffff;
         }
         
         .pandas-bar {
-            background: linear-gradient(90deg, #3498db, #2980b9);
-            width: 780px;
+            background: linear-gradient(90deg, #f43f5e, #e11d48);
+            width: 100%;
         }
         
         .hybrid-bar {
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-            width: 30px;
+            background: linear-gradient(90deg, #10b981, #059669);
+            width: 4%;
+            min-width: 80px;
         }
         
-        .cta {
-            font-size: 48px;
+        .stat-highlight {
+            font-size: 32px;
+            font-weight: 800;
+            color: #10b981;
+            text-align: center;
+            margin-top: 32px;
+        }
+        
+        .cta-box {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 24px 48px;
+            border: 1px solid #34d399;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
+            font-family: 'Consolas', monospace;
+            font-size: 36px;
             font-weight: 700;
-            margin-top: 60px;
-            color: #00d4ff;
+            color: #34d399;
+            margin-top: 20px;
         }
         
-        .logo {
+        .cta-url {
+            font-size: 32px;
+            color: #94a3b8;
+            margin-top: 40px;
+            font-weight: 500;
+        }
+        
+        .footer-logo {
             position: absolute;
             bottom: 40px;
             right: 60px;
-            font-size: 24px;
-            color: #666;
+            font-size: 22px;
+            color: #64748b;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
-    <div class="container" data-composition-id="hybridframe-demo" data-width="1920" data-height="1080" data-duration="37">
+    <div class="container" data-composition-id="hybridframe-demo" data-width="1920" data-height="1080" data-duration="37" data-start="0">
         <!-- Slide 1: Title -->
         <div class="slide clip active" id="slide-1" data-start="0" data-duration="5">
+            <div class="badge">Python High-Performance Data Engine</div>
             <h1 class="title">HybridFrame</h1>
             <p class="subtitle">The Fastest Way to Work with Data in Python</p>
-            <p class="feature-desc" style="font-size: 28px; margin-top: 40px;">
+            <p class="feature-desc" style="font-size: 26px; color: #cbd5e1; max-width: 800px; text-align: center;">
                 DuckDB + Pandas = Zero-Copy Performance
             </p>
         </div>
         
         <!-- Slide 2: Problem -->
         <div class="slide clip" id="slide-2" data-start="5" data-duration="5">
-            <h2 class="title" style="font-size: 56px;">The Problem</h2>
-            <div class="feature-grid">
+            <div class="badge" style="background: rgba(244, 63, 94, 0.15); border-color: rgba(244, 63, 94, 0.4); color: #fb7185;">The Problem</div>
+            <h2 class="title" style="font-size: 60px;">Why Traditional Pipelines Lag</h2>
+            <div class="feature-grid" style="margin-top: 20px;">
                 <div class="feature-card">
-                    <div class="feature-icon">🐌</div>
-                    <h3 class="feature-title">Pandas is Slow</h3>
-                    <p class="feature-desc">Complex queries take forever on large datasets</p>
+                    <div class="feature-icon">⚠️</div>
+                    <h3 class="feature-title">Pandas Bottlenecks</h3>
+                    <p class="feature-desc">Complex analytical queries run slowly on large memory footprints.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💾</div>
-                    <h3 class="feature-title">Memory Issues</h3>
-                    <p class="feature-desc">Out-of-core processing is hard to implement</p>
+                    <h3 class="feature-title">Memory Limits</h3>
+                    <p class="feature-desc">In-memory operations crash when datasets exceed RAM capacity.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔄</div>
-                    <h3 class="feature-title">Conversion Overhead</h3>
-                    <p class="feature-desc">Constant copying between engines wastes time</p>
+                    <h3 class="feature-title">Conversion Tax</h3>
+                    <p class="feature-desc">Converting between engines creates heavy memory-copy overhead.</p>
                 </div>
             </div>
         </div>
         
         <!-- Slide 3: Solution -->
         <div class="slide clip" id="slide-3" data-start="10" data-duration="5">
-            <h2 class="title" style="font-size: 56px;">The Solution</h2>
-            <div class="feature-grid">
+            <div class="badge">The Solution</div>
+            <h2 class="title" style="font-size: 60px;">Smart Engine Switching</h2>
+            <div class="feature-grid" style="margin-top: 20px;">
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Zero-Copy</h3>
-                    <p class="feature-desc">No data copying between DuckDB and Pandas</p>
+                    <h3 class="feature-title">Zero-Copy Transitions</h3>
+                    <p class="feature-desc">Seamless Arrow-based zero-copy bridge between DuckDB and Pandas.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🧠</div>
-                    <h3 class="feature-title">Smart Engine</h3>
-                    <p class="feature-desc">Auto-selects the best engine for each operation</p>
+                    <h3 class="feature-title">Adaptive Routing</h3>
+                    <p class="feature-desc">Automatically dispatches operations to the fastest available engine.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
-                    <h3 class="feature-title">26x Faster</h3>
-                    <p class="feature-desc">Sort + Head operations up to 26x faster</p>
+                    <h3 class="feature-title">26x Acceleration</h3>
+                    <p class="feature-desc">Chained sort and head operations run up to 26x faster than Pandas.</p>
                 </div>
             </div>
         </div>
         
         <!-- Slide 4: Code Example -->
         <div class="slide clip" id="slide-4" data-start="15" data-duration="7">
-            <h2 class="title" style="font-size: 48px;">Simple API</h2>
-            <div class="code-block">
-                <span class="code-keyword">from</span> hybrid_frame <span class="code-keyword">import</span> HybridFrame<br><br>
-                <span class="code-comment"># Create from Pandas</span><br>
-                hf = HybridFrame.<span class="code-function">from_pandas</span>(df)<br><br>
-                <span class="code-comment"># Lazy DuckDB operations</span><br>
-                result = (<br>
-                &nbsp;&nbsp;hf<br>
-                &nbsp;&nbsp;.<span class="code-function">filter</span>(<span class="code-string">"age > 25"</span>)<br>
-                &nbsp;&nbsp;.<span class="code-function">sort_values</span>(<span class="code-string">"salary"</span>, ascending=<span class="code-keyword">False</span>)<br>
-                &nbsp;&nbsp;.<span class="code-function">head</span>(<span class="code-string">10</span>)<br>
-                )<br><br>
-                <span class="code-comment"># Materialize for ML</span><br>
-                X, y = result.<span class="code-function">to_ml_ready</span>(<span class="code-string">"salary"</span>)
+            <div class="badge">Simple Python API</div>
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                    <div class="code-title">demo.py</div>
+                </div>
+                <div class="code-block">
+                    <span class="code-keyword">from</span> hybrid_frame <span class="code-keyword">import</span> HybridFrame<br><br>
+                    <span class="code-comment"># Wrap Pandas DataFrame with zero copy</span><br>
+                    hf = HybridFrame.<span class="code-function">from_pandas</span>(df)<br><br>
+                    <span class="code-comment"># Lazy DuckDB execution pipeline</span><br>
+                    result = (<br>
+                    &nbsp;&nbsp;hf<br>
+                    &nbsp;&nbsp;.<span class="code-function">filter</span>(<span class="code-string">"age > 25"</span>)<br>
+                    &nbsp;&nbsp;.<span class="code-function">sort_values</span>(<span class="code-string">"salary"</span>, ascending=<span class="code-keyword">False</span>)<br>
+                    &nbsp;&nbsp;.<span class="code-function">head</span>(<span class="code-string">10</span>)<br>
+                    )<br><br>
+                    <span class="code-comment"># Direct export to scikit-learn format</span><br>
+                    X, y = result.<span class="code-function">to_ml_ready</span>(<span class="code-string">"salary"</span>)
+                </div>
             </div>
         </div>
         
         <!-- Slide 5: Performance -->
         <div class="slide clip" id="slide-5" data-start="22" data-duration="5">
-            <h2 class="title" style="font-size: 56px;">Performance</h2>
-            <div style="margin-top: 40px;">
-                <div class="benchmark-bar">
-                    <span class="benchmark-label">Pandas</span>
-                    <div class="benchmark-fill pandas-bar">78ms</div>
+            <div class="badge">Real-World Benchmark</div>
+            <h2 class="title" style="font-size: 56px;">Execution Speed (1M Rows)</h2>
+            <div class="benchmark-box">
+                <div class="benchmark-bar-group">
+                    <div class="benchmark-header">
+                        <span>Pandas (Sort + Head)</span>
+                        <span>78 ms</span>
+                    </div>
+                    <div class="benchmark-track">
+                        <div class="benchmark-fill pandas-bar">78ms</div>
+                    </div>
                 </div>
-                <div class="benchmark-bar">
-                    <span class="benchmark-label">HybridFrame</span>
-                    <div class="benchmark-fill hybrid-bar">3ms</div>
+                <div class="benchmark-bar-group">
+                    <div class="benchmark-header">
+                        <span style="color: #34d399;">HybridFrame (Sort + Head)</span>
+                        <span style="color: #34d399;">3 ms</span>
+                    </div>
+                    <div class="benchmark-track">
+                        <div class="benchmark-fill hybrid-bar">3ms</div>
+                    </div>
                 </div>
-                <p style="font-size: 28px; color: #00d4ff; margin-top: 30px;">
-                    Sort + Head: 26x faster
-                </p>
+                <div class="stat-highlight">⚡ 26x Speedup over native Pandas</div>
             </div>
         </div>
         
         <!-- Slide 6: Features -->
         <div class="slide clip" id="slide-6" data-start="27" data-duration="5">
-            <h2 class="title" style="font-size: 56px;">Features</h2>
-            <div class="feature-grid">
+            <div class="badge">Capabilities</div>
+            <h2 class="title" style="font-size: 56px;">Full DataFrame Toolkit</h2>
+            <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 10px;">
                 <div class="feature-card">
                     <div class="feature-icon">🔍</div>
                     <h3 class="feature-title">Filter & Sort</h3>
-                    <p class="feature-desc">SQL-native operations with lazy evaluation</p>
+                    <p class="feature-desc">SQL pushdown query optimization</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
-                    <h3 class="feature-title">GroupBy & Agg</h3>
-                    <p class="feature-desc">Powerful aggregations with multiple functions</p>
+                    <h3 class="feature-title">GroupBy Agg</h3>
+                    <p class="feature-desc">Fast parallel aggregations</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔗</div>
-                    <h3 class="feature-title">Joins</h3>
-                    <p class="feature-desc">Hash joins with cross-connection transfer</p>
+                    <h3 class="feature-title">Relational Joins</h3>
+                    <p class="feature-desc">Cross-engine join optimization</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🧹</div>
                     <h3 class="feature-title">Data Cleaning</h3>
-                    <p class="feature-desc">fillna, dropna, replace, clip</p>
+                    <p class="feature-desc">fillna, dropna, replace & clip</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤖</div>
-                    <h3 class="feature-title">ML Ready</h3>
-                    <p class="feature-desc">to_ml_ready() for scikit-learn</p>
+                    <h3 class="feature-title">ML Preparation</h3>
+                    <p class="feature-desc">One-hot encoding & matrix export</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💾</div>
-                    <h3 class="feature-title">Streaming</h3>
-                    <p class="feature-desc">fetch_chunked() for out-of-core</p>
+                    <h3 class="feature-title">Out-of-Core</h3>
+                    <p class="feature-desc">Chunked streaming for giant files</p>
                 </div>
             </div>
         </div>
         
         <!-- Slide 7: CTA -->
         <div class="slide clip" id="slide-7" data-start="32" data-duration="5">
-            <h2 class="title" style="font-size: 64px;">Get Started</h2>
-            <div class="code-block" style="font-size: 32px; text-align: center; max-width: 800px; margin: 0 auto;">
+            <div class="badge">Get Started Today</div>
+            <h1 class="title" style="font-size: 72px;">Install HybridFrame</h1>
+            <div class="cta-box">
                 pip install hybrid-frame
             </div>
-            <p class="cta" style="margin-top: 40px;">https://github.com/shell-bay/hybrid-frame</p>
-            <p class="logo">HybridFrame v0.3.1</p>
+            <p class="cta-url">github.com/shell-bay/hybrid-frame</p>
+            <p class="footer-logo">HybridFrame v0.3.1</p>
         </div>
     </div>
     <script>
